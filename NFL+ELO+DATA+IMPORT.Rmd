@@ -1,0 +1,30 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+ DATA OBTAINMENT
+
+```{r}
+nfl_eloRAW <- read_csv("https://projects.fivethirtyeight.com/nfl-api/nfl_elo.csv")
+```
+
+
+
+
+```{r}
+library(tidyverse)
+library(janitor)
+ nfl_elo <- read_csv("https://projects.fivethirtyeight.com/nfl-api/nfl_elo.csv") %>% 
+  clean_names() %>%
+  mutate(
+    team1 = as.factor(team1), 
+    team2 = as.factor(team2),
+    neutral = ifelse(neutral == 1, TRUE, FALSE)
+  )
+ 
+ nfl_elo
+```
+
+
+
